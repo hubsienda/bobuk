@@ -3,7 +3,15 @@ import { getAllWriting } from '@/lib/writing'
 import { site } from '@/data/site'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes = ['', '/books/', '/books/declans-lost-race/', '/writing/', '/about/', '/contact/']
+  const staticRoutes = [
+    '',
+    '/books/',
+    '/books/declans-lost-race/',
+    '/books/the-ghost-of-highgate/',
+    '/writing/',
+    '/about/',
+    '/contact/'
+  ]
   const writing = await getAllWriting()
 
   return [

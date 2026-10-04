@@ -89,7 +89,12 @@ export async function getAllWriting(options?: { includeDrafts?: boolean }) {
   return items
     .filter(item => item.title && item.date)
     .filter(item => options?.includeDrafts || !item.draft)
-    .sort((a, b) => b.date.localeCompare(a.date))
+    .sort((a, b) => {
+      const dateOrder = b.date.localeCompare(a.date)
+      if (dateOrder !== 0) return dateOrder
+      if (a.featured !== b.featured) return Number(b.featured) - Number(a.featured)
+      return a.slug.localeCompare(b.slug)
+    })
 }
 
 export async function getWritingBySlug(slug: string) {

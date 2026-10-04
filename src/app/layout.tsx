@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   },
   description: site.description,
   alternates: { canonical: '/' },
+  icons: {
+    icon: '/logo/favicon.png',
+    shortcut: '/logo/favicon.png',
+    apple: '/logo/favicon.png'
+  },
   openGraph: {
     type: 'website',
     siteName: site.name,

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { BookCover } from '@/components/BookCover'
+import { ButtonLink } from '@/components/ButtonLink'
 import { declan } from '@/data/books'
 import { site } from '@/data/site'
 
@@ -48,6 +49,11 @@ export default function DeclanPage() {
               <p>The second profile matches evidence from a London murder committed thirty-two years earlier. Then an old university photograph points towards Declan.</p>
               <p>As the investigation moves between London and southern Spain, the evidence does not simply ask who the dead man was. It raises a more difficult question: what, exactly, can the evidence prove?</p>
             </div>
+            {declan.amazonUrl && (
+              <div className="action-group">
+                <ButtonLink href={declan.amazonUrl}>Buy on Amazon</ButtonLink>
+              </div>
+            )}
           </div>
         </div>
 

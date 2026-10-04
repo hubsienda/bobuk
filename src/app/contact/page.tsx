@@ -23,7 +23,9 @@ export default function ContactPage() {
         <div className="shell">
           <div className="contact-panel">
             <p>Email is the simplest way to make contact. Please include enough context to make the purpose of your message clear.</p>
-            <ButtonLink href={`mailto:${site.contactEmail}`}>Send an email</ButtonLink>
+            <div className="action-group">
+              <ButtonLink href={`mailto:${site.contactEmail}`}>Send an email</ButtonLink>
+            </div>
           </div>
         </div>
       </section>

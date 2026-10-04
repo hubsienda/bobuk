@@ -6,7 +6,7 @@ export type Book = {
   genres: string[]
   hook: string[]
   shortDescription: string
-  purchaseUrl?: string
+  amazonUrl?: string
 }
 
 export const books: Book[] = [
@@ -18,7 +18,8 @@ export const books: Book[] = [
     genres: ['Crime', 'Mystery', 'Forensic Mystery'],
     hook: ['One dead man.', 'Two male DNA profiles.'],
     shortDescription:
-      'A body on the Costa del Sol, two incompatible DNA profiles and a second profile that reaches back to a London murder committed thirty-two years earlier.'
+      'A body on the Costa del Sol, two incompatible DNA profiles and a second profile that reaches back to a London murder committed thirty-two years earlier.',
+    amazonUrl: 'https://www.amazon.com/dp/B0HDJY28W5'
   }
 ]
 

@@ -30,7 +30,9 @@ export default function BooksPage() {
                 <h2>{book.title}</h2>
                 <div className="genre-line">{book.genres.map(genre => <span key={genre}>{genre}</span>)}</div>
                 <p>{book.shortDescription}</p>
-                <ButtonLink href={`/books/${book.slug}/`} variant="text">Discover the book</ButtonLink>
+                <div className="action-group">
+                  <ButtonLink href={`/books/${book.slug}/`} variant="secondary">Discover the book</ButtonLink>
+                </div>
               </div>
             </article>
           ))}

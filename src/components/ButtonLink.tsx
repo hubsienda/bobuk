@@ -13,12 +13,14 @@ export function ButtonLink({
   const remote = /^https?:\/\//.test(href)
   const external = remote || href.startsWith('mailto:')
   const className = `button-link button-${variant}`
+  const primaryStyle = variant === 'primary' ? { color: 'var(--ink)' } : undefined
 
   if (external) {
     return (
       <a
         href={href}
         className={className}
+        style={primaryStyle}
         {...(remote ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       >
         {children}
@@ -27,7 +29,7 @@ export function ButtonLink({
   }
 
   return (
-    <Link href={href} className={className}>
+    <Link href={href} className={className} style={primaryStyle}>
       {children}
     </Link>
   )

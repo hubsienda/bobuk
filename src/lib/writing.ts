@@ -9,12 +9,17 @@ export type WritingItem = {
   slug: string
   title: string
   description: string
+  seoDescription?: string
   date: string
   type: WritingType
   tags: string[]
   featured: boolean
   draft: boolean
   readingMinutes: number
+  chapter?: string
+  image?: string
+  imageAlt?: string
+  bookTitle?: string
 }
 
 const contentRoot = path.join(process.cwd(), 'src', 'content')
@@ -66,12 +71,17 @@ export async function getAllWriting(options?: { includeDrafts?: boolean }) {
         slug: fileToSlug(file),
         title: String(data.title ?? ''),
         description: String(data.description ?? ''),
+        seoDescription: data.seoDescription ? String(data.seoDescription) : undefined,
         date: String(data.date ?? ''),
         type,
         tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
         featured: Boolean(data.featured),
         draft: Boolean(data.draft),
-        readingMinutes: wordsToReadingMinutes(content)
+        readingMinutes: wordsToReadingMinutes(content),
+        chapter: data.chapter ? String(data.chapter) : undefined,
+        image: data.image ? String(data.image) : undefined,
+        imageAlt: data.imageAlt ? String(data.imageAlt) : undefined,
+        bookTitle: data.bookTitle ? String(data.bookTitle) : undefined
       } satisfies WritingItem
     })
   )

@@ -20,17 +20,29 @@ export async function generateMetadata({
   const item = await getWritingBySlug(slug)
   if (!item || (item.draft && process.env.NODE_ENV === 'production')) return {}
 
+  const description = item.seoDescription || item.description
+  const images = item.image
+    ? [{ url: item.image, alt: item.imageAlt || item.title }]
+    : undefined
+
   return {
     title: item.title,
-    description: item.description,
+    description,
     alternates: { canonical: `/writing/${item.slug}/` },
     openGraph: {
       type: 'article',
-      title: item.title,
-      description: item.description,
+      title: `${item.title} | ${site.name}`,
+      description,
       url: `${site.url}/writing/${item.slug}/`,
       publishedTime: item.date,
-      authors: [site.name]
+      authors: [site.name],
+      ...(images ? { images } : {})
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${item.title} | ${site.name}`,
+      description,
+      ...(item.image ? { images: [item.image] } : {})
     }
   }
 }
@@ -58,10 +70,12 @@ export default async function WritingArticlePage({
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: item.title,
-    description: item.description,
+    description: item.seoDescription || item.description,
     datePublished: item.date,
     author: { '@type': 'Person', name: site.name, url: site.url },
-    mainEntityOfPage: `${site.url}/writing/${item.slug}/`
+    mainEntityOfPage: `${site.url}/writing/${item.slug}/`,
+    ...(item.image ? { image: `${site.url}${item.image}` } : {}),
+    ...(item.bookTitle ? { isPartOf: { '@type': 'Book', name: item.bookTitle } } : {})
   }
 
   return (
@@ -72,6 +86,7 @@ export default async function WritingArticlePage({
         <h1 className="article-title">{item.title}</h1>
         {item.description && <p className="article-description">{item.description}</p>}
         <div className="article-meta">
+          {item.chapter && <span>{item.chapter}</span>}
           <span>{formatWritingDate(item.date)}</span>
           <span>{item.readingMinutes} min read</span>
         </div>

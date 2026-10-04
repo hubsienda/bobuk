@@ -3,6 +3,7 @@ import { BookCover } from '@/components/BookCover'
 import { ButtonLink } from '@/components/ButtonLink'
 import { WritingList } from '@/components/WritingList'
 import { declan } from '@/data/books'
+import { site } from '@/data/site'
 import { getAllWriting } from '@/lib/writing'
 
 export default async function HomePage() {
@@ -50,7 +51,10 @@ export default async function HomePage() {
               <div className="feature-point"><span>02</span><span>An old university photograph points towards Declan.</span></div>
               <div className="feature-point"><span>03</span><span>The investigation moves between London and southern Spain.</span></div>
             </div>
-            <ButtonLink href="/books/declans-lost-race/" variant="text">Discover the book</ButtonLink>
+            <div className="action-group">
+              {declan.amazonUrl && <ButtonLink href={declan.amazonUrl}>Buy on Amazon</ButtonLink>}
+              <ButtonLink href="/books/declans-lost-race/" variant="secondary">Discover the book</ButtonLink>
+            </div>
           </div>
         </div>
       </section>
@@ -65,6 +69,22 @@ export default async function HomePage() {
             <ButtonLink href="/writing/" variant="text">View all writing</ButtonLink>
           </div>
           <WritingList items={latestWriting} />
+        </div>
+      </section>
+
+      <section className="section socratic-section">
+        <div className="shell socratic-grid">
+          <div className="socratic-marker" aria-hidden="true">?</div>
+          <div className="socratic-copy">
+            <p className="eyebrow">The Socratic Shrug</p>
+            <h2>{site.socraticShrug.tagline}</h2>
+            <p>
+              My philosophical and essayistic writing lives at The Socratic Shrug — essays on evidence, power, human behaviour and the stories we tell ourselves, returning again and again to a simple question: what are we entitled to claim we know?
+            </p>
+            <div className="action-group">
+              <ButtonLink href={site.socraticShrug.url} variant="secondary">Read The Socratic Shrug ↗</ButtonLink>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -86,7 +106,9 @@ export default async function HomePage() {
             <p>
               Bob Mazzei writes fiction in which mystery meets questions of memory, identity, evidence and certainty. His work moves between Britain and southern Europe and is shaped by an interest in how people reason, what they believe and what the evidence actually permits them to know.
             </p>
-            <ButtonLink href="/about/" variant="text">About Bob</ButtonLink>
+            <div className="action-group">
+              <ButtonLink href="/about/" variant="text">About Bob</ButtonLink>
+            </div>
           </div>
         </div>
       </section>

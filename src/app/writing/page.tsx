@@ -26,15 +26,14 @@ export default async function WritingPage({
 
   return (
     <>
-      <header className="page-hero">
+      <header className="page-hero writing-page-hero">
         <div className="shell">
-          <p className="eyebrow">Writing</p>
           <h1>Writing</h1>
           <p>Essays, fiction and extracts.</p>
         </div>
       </header>
       <div className="page-rule" />
-      <section className="section-tight">
+      <section className="section-tight writing-index-section">
         <div className="shell">
           <nav className="filters" aria-label="Filter writing by type">
             <Link className={!active ? 'filter-link active' : 'filter-link'} href="/writing/">All</Link>

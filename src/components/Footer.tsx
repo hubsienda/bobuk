@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CookiePreferencesButton } from '@/components/CookiePreferencesButton'
 import { site } from '@/data/site'
 
 export function Footer() {
@@ -15,6 +16,11 @@ export function Footer() {
               {item.label}
             </Link>
           ))}
+        </nav>
+        <nav className="footer-legal" aria-label="Privacy and cookie settings">
+          <Link href="/privacy-policy/">Privacy Policy</Link>
+          <Link href="/cookie-policy/">Cookie Policy</Link>
+          <CookiePreferencesButton />
         </nav>
         <p className="copyright">© {new Date().getFullYear()} Bob Mazzei. All rights reserved.</p>
       </div>

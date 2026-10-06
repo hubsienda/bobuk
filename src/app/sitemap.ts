@@ -10,7 +10,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/books/the-ghost-of-highgate/',
     '/writing/',
     '/about/',
-    '/contact/'
+    '/contact/',
+    '/privacy-policy/',
+    '/cookie-policy/'
   ]
   const writing = await getAllWriting()
 

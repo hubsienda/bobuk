@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { ButtonLink } from '@/components/ButtonLink'
 import { site } from '@/data/site'
 
@@ -23,6 +24,7 @@ export default function ContactPage() {
         <div className="shell">
           <div className="contact-panel">
             <p>Email is the simplest way to make contact. Please include enough context to make the purpose of your message clear.</p>
+            <p className="contact-privacy">Information sent by email is handled as described in the <Link href="/privacy-policy/">Privacy Policy</Link>.</p>
             <div className="action-group">
               <ButtonLink href={`mailto:${site.contactEmail}`}>Send an email</ButtonLink>
             </div>

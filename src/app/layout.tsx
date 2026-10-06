@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter, Lora } from 'next/font/google'
 import type { ReactNode } from 'react'
+import { CookieConsentProvider } from '@/components/CookieConsentProvider'
 import { Footer } from '@/components/Footer'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { Header } from '@/components/Header'
 import { NextraTheme } from '@/components/NextraTheme'
 import { site } from '@/data/site'
@@ -50,11 +52,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
-        <Header />
-        <NextraTheme>
-          <main>{children}</main>
-        </NextraTheme>
-        <Footer />
+        <CookieConsentProvider>
+          <Header />
+          <NextraTheme>
+            <main>{children}</main>
+          </NextraTheme>
+          <Footer />
+          <GoogleAnalytics />
+        </CookieConsentProvider>
       </body>
     </html>
   )

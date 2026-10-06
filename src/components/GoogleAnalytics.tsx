@@ -11,7 +11,6 @@ const SCRIPT_ID = 'bobmazzei-google-analytics'
 type AnalyticsWindow = Window & {
   dataLayer?: unknown[][]
   gtag?: (...args: unknown[]) => void
-  [key: string]: unknown
 }
 
 export function GoogleAnalytics() {
@@ -22,16 +21,17 @@ export function GoogleAnalytics() {
     if (!hydrated || !GA_ID) return
 
     const analyticsWindow = window as AnalyticsWindow
+    const analyticsFlags = window as unknown as Record<string, unknown>
     const disableKey = 'ga-disable-' + GA_ID
 
     if (!consent?.analytics) {
-      analyticsWindow[disableKey] = true
+      analyticsFlags[disableKey] = true
       document.getElementById(SCRIPT_ID)?.remove()
       removeAnalyticsCookies()
       return
     }
 
-    analyticsWindow[disableKey] = false
+    analyticsFlags[disableKey] = false
     analyticsWindow.dataLayer = analyticsWindow.dataLayer || []
     analyticsWindow.gtag =
       analyticsWindow.gtag ||

@@ -36,8 +36,7 @@ export default function AboutPage() {
             />
           </div>
           <div className="about-copy">
-            <p className="about-experience-marker">Since 1987</p>
-            <p className="about-lead">Bob Mazzei is an author, business engineer and AI consultant whose work spans fiction, technology, business, political economy and questions of evidence, reasoning and human behaviour.</p>
+            <p>Bob Mazzei is an author, business engineer and AI consultant whose work spans fiction, technology, business, political economy and questions of evidence, reasoning and human behaviour.</p>
             <p>His fiction, essays and analysis share a recurring interest in how people and organisations make decisions, construct certainty and respond when evidence is incomplete, contested or inconvenient.</p>
           </div>
         </div>

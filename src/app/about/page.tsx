@@ -18,8 +18,7 @@ export default function AboutPage() {
       <header className="page-hero">
         <div className="shell">
           <p className="eyebrow">About</p>
-          <h1>Bob Mazzei</h1>
-          <p>Author, business engineer and AI consultant. Nearly four decades of work across technology, commerce and organisations inform writing that moves between fiction, artificial intelligence, business, evidence and the systems people build around themselves.</p>
+          <h1>Author, business engineer and AI consultant.</h1>
         </div>
       </header>
       <div className="page-rule" />
@@ -39,7 +38,7 @@ export default function AboutPage() {
           <div className="about-copy">
             <p className="about-experience-marker">Since 1987</p>
             <p className="about-lead">Bob Mazzei is an author, business engineer and AI consultant whose work spans fiction, technology, business, political economy and questions of evidence, reasoning and human behaviour.</p>
-            <p>Bob Mazzei writes fiction, essays and analysis concerned with the way people interpret evidence, build certainty and make decisions when the facts are incomplete or contested.</p>
+            <p>His fiction, essays and analysis share a recurring interest in how people and organisations make decisions, construct certainty and respond when evidence is incomplete, contested or inconvenient.</p>
           </div>
         </div>
       </section>
@@ -51,23 +50,10 @@ export default function AboutPage() {
             <h2>Professional background</h2>
           </div>
           <div className="about-copy">
-            <p>My professional life began in 1987 and has moved between business, technology and the problems that appear when the two meet.</p>
-            <p>Over nearly four decades I have worked in business engineering, commercial management, software and systems analysis, project and product management, data and professional education. The work has crossed industries as different as agrifood, construction, medicine, law, professional services and technology, often in international markets and across complex commercial relationships.</p>
-            <p>Teaching has been another constant. I have taught business, technology and practical problem-solving to thousands of people, developed professional courses and directed a school of informatics and technologies.</p>
-            <p>That experience inevitably finds its way into my writing. It is one reason I am interested less in technology for its own sake than in what people and organisations actually do with it — how decisions are made, how systems acquire authority, where evidence ends and assumption begins, and what happens when theory encounters reality.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section about-perspective-section">
-        <div className="shell about-editorial-grid">
-          <div>
-            <p className="eyebrow">Writing &amp; ideas</p>
-            <h2>What the work keeps returning to.</h2>
-          </div>
-          <div className="about-copy">
-            <p>His work spans technology, business, artificial intelligence, political economy, literature and human behaviour, alongside fiction that moves between Britain and southern Europe.</p>
-            <p>More than three decades of commercial and technical experience inform a persistent interest in reasoning, systems, proof and the assumptions behind difficult decisions. The same questions recur across both the professional analysis and the writing: what do we know, what are we assuming, and what does the evidence actually justify?</p>
+            <p>My professional life began in 1987, and for nearly four decades I have worked where business, technology and practical problem-solving meet.</p>
+            <p>My experience spans business engineering, commercial management, software and systems analysis, project and product management, data and professional education, across sectors including agrifood, construction, medicine, law, professional services and technology. Much of that work has been international, involving businesses, organisations and commercial relationships across multiple markets.</p>
+            <p>Teaching has also been a significant part of my career. I have taught business, technology and applied problem-solving to thousands of people, developed professional courses and directed a school of informatics and technologies.</p>
+            <p>That experience informs the way I write and analyse problems today. I am interested not in technology or theory for their own sake, but in what happens when ideas meet organisations, incentives, evidence and reality.</p>
           </div>
         </div>
       </section>

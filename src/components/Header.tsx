@@ -9,6 +9,9 @@ export function Header() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
+  const isActive = (href: string) =>
+    pathname === href || (href !== '/' && pathname.startsWith(href))
+
   useEffect(() => setOpen(false), [pathname])
 
   useEffect(() => {
@@ -33,11 +36,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={
-                pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
-                  ? 'nav-link active'
-                  : 'nav-link'
-              }
+              className={isActive(item.href) ? 'nav-link active' : 'nav-link'}
             >
               {item.label}
             </Link>
@@ -60,7 +59,11 @@ export function Header() {
         <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation">
           <div className="shell mobile-nav-inner">
             {site.navigation.map(item => (
-              <Link key={item.href} href={item.href} className="mobile-nav-link">
+              <Link
+                key={item.href}
+                href={item.href}
+                className={isActive(item.href) ? 'mobile-nav-link active' : 'mobile-nav-link'}
+              >
                 {item.label}
               </Link>
             ))}

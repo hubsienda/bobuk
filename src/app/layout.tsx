@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
-      <body className="antialiased">
+      <body id="top" className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <CookieConsentProvider>
           <Header />

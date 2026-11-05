@@ -280,6 +280,9 @@ export default async function HomePage() {
             <p>
               Bob Mazzei is an author, business engineer and AI consultant whose work spans fiction, technology, business, political economy and questions of evidence, reasoning and human behaviour.
             </p>
+            <p>
+              His professional career began in 1987 and has crossed business engineering, technology, commercial management, software, data, project work and professional education in international markets.
+            </p>
             <div className="action-group">
               <ButtonLink href="/about/" variant="text">About Bob</ButtonLink>
             </div>

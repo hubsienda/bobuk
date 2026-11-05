@@ -38,7 +38,8 @@ const supportedTypes = new Set<WritingType>(['article', 'essay', 'fiction', 'ext
 
 const tagAliases: Record<string, string> = {
   ai: 'Artificial Intelligence',
-  'artificial intelligence': 'Artificial Intelligence'
+  'artificial intelligence': 'Artificial Intelligence',
+  saas: 'SaaS'
 }
 
 async function listMdxFiles(directory: string): Promise<string[]> {

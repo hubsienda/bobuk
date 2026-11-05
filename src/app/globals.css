@@ -1144,3 +1144,13 @@ h4 { font-size: 1.2rem; line-height: 1.32; }
   .home-book-secondary-cover .book-cover-frame { width: min(58vw, 220px); }
   .premium-publications { grid-template-columns: 1fr; }
 }
+
+
+/* Article standfirst */
+.article-standfirst {
+  margin: 0 0 2rem !important;
+  color: #3f3a35;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.12rem, 2vw, 1.24rem);
+  line-height: 1.6;
+}

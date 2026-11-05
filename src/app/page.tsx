@@ -5,6 +5,7 @@ import { ButtonLink } from '@/components/ButtonLink'
 import { WritingList } from '@/components/WritingList'
 import { declan, ghost } from '@/data/books'
 import { premiumPublications } from '@/data/premiumPublications'
+import { freeResources } from '@/data/resources'
 import { site } from '@/data/site'
 import {
   formatWritingDate,
@@ -121,6 +122,32 @@ export default async function HomePage() {
               return <Link key={area.label} href={href}>{area.label}<span aria-hidden="true">→</span></Link>
             })}
           </nav>
+        </div>
+      </section>
+
+      <section className="section free-resources-section">
+        <div className="shell">
+          <div className="free-resources-intro">
+            <p className="eyebrow">Free resources</p>
+            <h2>Free guides &amp; practical resources</h2>
+            <p>Some ideas are more useful when you can take them away and use them.</p>
+            <p>Download free guides, ebooks and practical resources on artificial intelligence, business engineering, operations and better decision-making — published by Sienda Media from the work and experience of Sienda Ltd.</p>
+          </div>
+
+          <div className="free-resource-list">
+            {freeResources.map(resource => (
+              <article key={resource.title} className="free-resource-item">
+                <p className="resource-source">Published by {resource.source}</p>
+                <h3>{resource.title}</h3>
+                <p>{resource.description}</p>
+                <ButtonLink href={resource.url} variant="text">View free guide →</ButtonLink>
+              </article>
+            ))}
+          </div>
+
+          <div className="free-resources-all">
+            <ButtonLink href="https://siendamedia.com/" variant="secondary">Explore all free resources →</ButtonLink>
+          </div>
         </div>
       </section>
 

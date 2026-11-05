@@ -89,6 +89,17 @@ export default async function WritingPage({
           </div>
         </div>
       </section>
+
+      <section className="writing-resource-strip">
+        <div className="shell writing-resource-strip-inner">
+          <div>
+            <p className="eyebrow">Free resources</p>
+            <h2>Free guides &amp; practical resources</h2>
+            <p>Practical ebooks, guides and tools on artificial intelligence, business engineering, operations and better decision-making.</p>
+          </div>
+          <ButtonLink href="https://siendamedia.com/" variant="secondary">Explore free resources →</ButtonLink>
+        </div>
+      </section>
     </>
   )
 }

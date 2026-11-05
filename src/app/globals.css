@@ -1163,3 +1163,106 @@ h4 { font-size: 1.2rem; line-height: 1.32; }
   font-size: clamp(1.12rem, 2vw, 1.24rem);
   line-height: 1.6;
 }
+
+
+/* Free resources bridge */
+.free-resources-section {
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.free-resources-intro {
+  max-width: 790px;
+}
+.free-resources-intro h2 {
+  margin: 0;
+}
+.free-resources-intro > p:not(.eyebrow) {
+  max-width: 68ch;
+  color: #514c46;
+}
+.free-resource-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 34px;
+  margin-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+.free-resource-item {
+  min-width: 0;
+  padding: 24px 0 4px;
+}
+.free-resource-item + .free-resource-item {
+  border-left: 1px solid var(--rule);
+  padding-left: 34px;
+}
+.resource-source {
+  margin: 0 0 9px;
+  color: var(--orange-dark);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.free-resource-item h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  line-height: 1.25;
+}
+.free-resource-item > p:not(.resource-source) {
+  margin: 12px 0 0;
+  color: #57514b;
+}
+.free-resource-item .button-text {
+  margin-top: 15px;
+}
+.free-resources-all {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+.writing-resource-strip {
+  padding: 34px 0;
+  border-top: 1px solid var(--rule);
+  background: var(--orange-pale);
+}
+.writing-resource-strip-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 30px;
+  align-items: center;
+}
+.writing-resource-strip h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.65rem);
+}
+.writing-resource-strip p:not(.eyebrow) {
+  max-width: 68ch;
+  margin: 8px 0 0;
+  color: #514c46;
+}
+@media (max-width: 900px) {
+  .free-resource-list {
+    grid-template-columns: 1fr;
+  }
+  .free-resource-item + .free-resource-item {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+    padding-left: 0;
+  }
+  .writing-resource-strip-inner {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 680px) {
+  .free-resource-list {
+    margin-top: 28px;
+  }
+  .free-resource-item {
+    padding-top: 20px;
+  }
+  .free-resources-all .button-link,
+  .writing-resource-strip .button-link {
+    width: 100%;
+  }
+}

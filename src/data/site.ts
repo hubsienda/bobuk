@@ -1,7 +1,7 @@
 export const site = {
   name: 'Bob Mazzei',
   descriptor: 'Writer',
-  url: 'https://bobmazzei.co.uk',
+  url: 'https://www.bobmazzei.co.uk',
   contactEmail: 'bob@bobmazzei.co.uk',
   socraticShrug: {
     name: 'The Socratic Shrug',

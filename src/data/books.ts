@@ -7,6 +7,9 @@ export type Book = {
   hook: string[]
   shortDescription: string
   amazonUrl?: string
+  downloadUrl?: string
+  downloadLabel?: string
+  writingUrl?: string
   year?: number
   category?: string
   location?: string
@@ -39,8 +42,26 @@ export const books: Book[] = [
     year: 2023,
     category: 'Philosophical satire',
     location: 'London'
+  },
+  {
+    slug: 'the-missing-hour',
+    title: 'The Missing Hour',
+    cover: '/covers/the-missing-hour.jpg',
+    coverAlt: 'Cover of The Missing Hour by Bob Mazzei',
+    genres: ['Philosophical fiction', 'Satirical fiction', 'Allegorical fiction'],
+    hook: ['The missing hour was never really missing.', 'Someone was using it.'],
+    shortDescription:
+      "In an unnamed Italian seaside city, an hour has vanished into queues, procedures, private lanes and the machinery of everyday life. A satirical novel about time, inequality, merit, freedom and the institutions that quietly decide whose life must wait.",
+    downloadUrl:
+      'https://drive.google.com/file/d/1KsHqkL3HGsFZc7PL5IdeDJL9IKcufPV1/view?usp=drive_link',
+    downloadLabel: 'Download free PDF',
+    writingUrl: '/writing/the-missing-hour/',
+    year: 2025,
+    category: 'Philosophical satire',
+    location: 'Unnamed Italian seaside city'
   }
 ]
 
 export const declan = books[0]
 export const ghost = books[1]
+export const missingHour = books[2]

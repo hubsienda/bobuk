@@ -255,6 +255,15 @@ h4 { font-size: 1.2rem; line-height: 1.32; }
 .book-list-item { display: grid; grid-template-columns: minmax(220px, 320px) 1fr; gap: 54px; align-items: center; }
 .book-list-item h2 { margin: 0; }
 .book-list-item p { max-width: 60ch; color: #514c46; }
+.book-list-hook {
+  margin: 22px 0 0;
+  color: var(--orange-dark) !important;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.08rem, 2vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.book-list-hook span { display: block; }
 .genre-line { display: flex; flex-wrap: wrap; gap: 9px; margin: 18px 0 22px; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
 .genre-line span:not(:last-child)::after { content: ' / '; margin-left: 9px; color: var(--orange-dark); }
 

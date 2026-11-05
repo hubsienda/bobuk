@@ -64,7 +64,7 @@ export default async function HomePage() {
           <div className="section-heading-row">
             <div>
               <p className="eyebrow">Latest writing</p>
-              <h2>Essays, fiction and extracts.</h2>
+              <h2>Essays, articles, fiction and extracts.</h2>
             </div>
             <ButtonLink href="/writing/" variant="text">View all writing</ButtonLink>
           </div>
@@ -79,7 +79,7 @@ export default async function HomePage() {
             <p className="eyebrow">The Socratic Shrug</p>
             <h2>{site.socraticShrug.tagline}</h2>
             <p>
-              My philosophical and essayistic writing lives at The Socratic Shrug — essays on evidence, power, human behaviour and the stories we tell ourselves, returning again and again to a simple question: what are we entitled to claim we know?
+              I also publish The Socratic Shrug on Substack — essays and arguments on evidence, certainty, power and human behaviour.
             </p>
             <div className="action-group">
               <ButtonLink href={site.socraticShrug.url} variant="secondary">Read The Socratic Shrug ↗</ButtonLink>

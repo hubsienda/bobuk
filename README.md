@@ -1,58 +1,48 @@
 # Bob Mazzei — Author Website
 
-Official author website for Bob Mazzei, built with Next.js, TypeScript, the App Router, Nextra 4, MDX and Tailwind CSS.
+Official author and publishing website for Bob Mazzei, built with Next.js, TypeScript, the App Router, Nextra 4, MDX and Tailwind CSS.
 
 ## Local development
 
-```bash
-npm install
-npm run dev
-```
+Run `npm install`, then `npm run dev`.
 
-Production verification:
-
-```bash
-npm run build
-```
+Production verification uses `npm run build`.
 
 The repository is intended for GitHub + Vercel deployment.
 
-## Publishing a new piece
+## Publishing a new article
 
-Create an `.mdx` file inside `src/content/`. The folder/file path becomes the URL beneath `/writing/`.
+1. Create an `.mdx` file under `src/content/`.
+2. Add front matter using `docs/writing-template.mdx` as the starting point.
+3. Write the article in normal Markdown/MDX. The front-matter `title` becomes the H1, so do not start the body with another H1.
+4. Set `draft: false` when ready.
+5. Commit and push to GitHub.
+6. Vercel deploys it automatically and the piece appears under `/writing/`, RSS and the sitemap.
 
-For example:
+The file path is the stable public slug:
 
-```text
-src/content/the-shape-of-evidence.mdx
-→ /writing/the-shape-of-evidence/
-```
+`src/content/the-memory-of-a-crime.mdx` → `/writing/the-memory-of-a-crime/`
 
-Use front matter like this:
+Nested folders also work:
 
-```yaml
----
-title: "Article title"
-description: "Short description used in listings and metadata."
-date: "2026-10-04"
-type: "essay"
-tags:
-  - reasoning
-featured: false
-draft: false
----
-```
+`src/content/essays/the-age-of-certainty.mdx` → `/writing/essays/the-age-of-certainty/`
 
-Fields:
+Publication types:
 
-- `title`: public title.
-- `description`: listing and metadata summary.
-- `date`: publication date in `YYYY-MM-DD` format.
-- `type`: `essay`, `fiction` or `extract`.
-- `tags`: optional list of internal/content tags.
-- `featured`: optional editorial flag reserved for future use.
-- `draft`: set to `true` to keep a piece out of production listings, RSS and sitemap; direct production access returns 404.
+- `article` — factual, analytical, cultural, political, technical or investigative writing.
+- `essay` — personal, philosophical, argumentative or literary long-form writing.
+- `fiction` — original short fiction or standalone fictional pieces.
+- `extract` — extracts from published or forthcoming books.
 
-Reading time is calculated automatically from the MDX body.
+Required front matter: `title`, `description`, `date`, `type`, `draft`.
 
-Publishing workflow: create the file, write the piece, commit to GitHub and let Vercel deploy.
+Optional fields: `subtitle`, `seoDescription`, `updated`, `tags`, `featured`, `image`, `imageAlt`, `series`, `canonical`, `bookTitle`.
+
+Reading time is calculated automatically. Drafts and future-dated pieces remain unpublished in production. Tags automatically generate tag pages, and related writing is selected from shared tags.
+
+Publishing source of truth:
+
+GitHub = editorial repository  
+Nextra/MDX = content engine  
+Next.js = application/site  
+Vercel = publication/deployment

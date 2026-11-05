@@ -1,5 +1,6 @@
 import { useMDXComponents as getNextraComponents } from 'nextra/mdx-components'
 import type { ComponentPropsWithoutRef } from 'react'
+import { ArticleImage, BookCTA, ExternalLink, Note, PullQuote } from '@/components/EditorialMdx'
 
 const defaultComponents = getNextraComponents()
 
@@ -12,6 +13,11 @@ export function useMDXComponents(components = {}) {
       const external = typeof props.href === 'string' && /^https?:\/\//.test(props.href)
       return <a {...props} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} />
     },
+    PullQuote,
+    ArticleImage,
+    Note,
+    BookCTA,
+    ExternalLink,
     ...components
   }
 }

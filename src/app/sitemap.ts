@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { getAllWriting } from '@/lib/writing'
+import { getAllTags, getAllWriting } from '@/lib/writing'
 import { site } from '@/data/site'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -9,15 +9,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/books/declans-lost-race/',
     '/books/the-ghost-of-highgate/',
     '/writing/',
+    '/writing/archive/',
     '/about/',
     '/contact/',
     '/privacy-policy/',
     '/cookie-policy/'
   ]
-  const writing = await getAllWriting()
+  const [writing, tags] = await Promise.all([getAllWriting(), getAllTags()])
 
   return [
-    ...staticRoutes.map(route => ({ url: `${site.url}${route}`, lastModified: new Date() })),
-    ...writing.map(item => ({ url: `${site.url}/writing/${item.slug}/`, lastModified: new Date(`${item.date}T12:00:00Z`) }))
+    ...staticRoutes.map(route => ({ url: site.url + route, lastModified: new Date() })),
+    ...tags.map(tag => ({ url: site.url + '/writing/tag/' + tag.slug + '/', lastModified: new Date() })),
+    ...writing.map(item => ({
+      url: site.url + '/writing/' + item.slug + '/',
+      lastModified: new Date((item.updated || item.date) + 'T12:00:00Z')
+    }))
   ]
 }

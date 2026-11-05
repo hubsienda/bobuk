@@ -5,11 +5,12 @@ import { site } from '@/data/site'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
     '',
+    '/writing/',
+    '/writing/archive/',
     '/books/',
     '/books/declans-lost-race/',
     '/books/the-ghost-of-highgate/',
-    '/writing/',
-    '/writing/archive/',
+    '/advisory/',
     '/about/',
     '/contact/',
     '/privacy-policy/',

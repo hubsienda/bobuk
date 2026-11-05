@@ -5,7 +5,7 @@ import { site } from '@/data/site'
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Contact Bob Mazzei for reader, publishing, media and writing-related enquiries.',
+  description: 'Contact Bob Mazzei for reader, publishing, media and professional enquiries.',
   alternates: { canonical: '/contact/' }
 }
 
@@ -16,7 +16,7 @@ export default function ContactPage() {
         <div className="shell">
           <p className="eyebrow">Contact</p>
           <h1>Get in touch.</h1>
-          <p>For readers, publishing enquiries, media and professional contact relating to the writing.</p>
+          <p>For readers, publishing enquiries, media and professional enquiries.</p>
         </div>
       </header>
       <div className="page-rule" />

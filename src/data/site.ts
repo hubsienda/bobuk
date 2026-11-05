@@ -1,6 +1,6 @@
 export const site = {
   name: 'Bob Mazzei',
-  descriptor: 'Writer',
+  descriptor: 'Author',
   url: 'https://www.bobmazzei.co.uk',
   contactEmail: 'bob@bobmazzei.co.uk',
   socraticShrug: {
@@ -9,11 +9,12 @@ export const site = {
     url: 'https://bobmazzei.substack.com/'
   },
   description:
-    'The official website of Bob Mazzei, writer of crime and literary fiction exploring memory, identity, evidence and certainty.',
+    'The official website of Bob Mazzei — author, business engineer and AI consultant. Essays, analysis, fiction and books on technology, business, artificial intelligence, evidence, ideas and contemporary life.',
   navigation: [
     { href: '/', label: 'Home' },
-    { href: '/books/', label: 'Books' },
     { href: '/writing/', label: 'Writing' },
+    { href: '/books/', label: 'Books' },
+    { href: '/advisory/', label: 'Advisory' },
     { href: '/about/', label: 'About' },
     { href: '/contact/', label: 'Contact' }
   ]

@@ -8,7 +8,7 @@ export function Footer() {
       <div className="shell footer-inner">
         <div>
           <p className="footer-name">Bob Mazzei</p>
-          <p className="footer-role">Writer</p>
+          <p className="footer-role">Author</p>
         </div>
         <nav className="footer-nav" aria-label="Footer navigation">
           {site.navigation.slice(1).map(item => (

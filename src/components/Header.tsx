@@ -25,7 +25,7 @@ export function Header() {
       <div className="shell header-inner">
         <Link className="brand" href="/" aria-label="Bob Mazzei home">
           <span className="brand-name">BOB MAZZEI</span>
-          <span className="brand-role">WRITER</span>
+          <span className="brand-role">AUTHOR</span>
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">

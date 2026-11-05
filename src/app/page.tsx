@@ -1,61 +1,107 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { BookCover } from '@/components/BookCover'
 import { ButtonLink } from '@/components/ButtonLink'
 import { WritingList } from '@/components/WritingList'
-import { declan } from '@/data/books'
+import { declan, ghost } from '@/data/books'
+import { premiumPublications } from '@/data/premiumPublications'
 import { site } from '@/data/site'
-import { getAllWriting } from '@/lib/writing'
+import {
+  formatWritingDate,
+  getAllTags,
+  getAllWriting,
+  tagToSlug,
+  writingTypeLabel
+} from '@/lib/writing'
+
+const areas = [
+  { label: 'Artificial Intelligence', tag: 'artificial-intelligence' },
+  { label: 'Business & Technology', tag: 'business-and-technology' },
+  { label: 'Philosophy', tag: 'philosophy' },
+  { label: 'Political Economy', tag: 'political-economy' },
+  { label: 'Evidence & Reasoning', tag: 'evidence-and-reasoning' },
+  { label: 'Human Behaviour', tag: 'human-behaviour' },
+  { label: 'Literature & Fiction', tag: 'literature-and-fiction' }
+] as const
 
 export default async function HomePage() {
-  const latestWriting = (await getAllWriting()).slice(0, 3)
+  const [writing, tags] = await Promise.all([getAllWriting(), getAllTags()])
+  const latest = writing[0]
+  const featured = writing.find(item => item.featured) ?? latest
+  const latestWriting = writing.slice(0, 5)
+  const liveTagSlugs = new Set(tags.map(tag => tag.slug))
 
   return (
     <>
-      <section className="hero">
-        <div className="shell hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow">Bob Mazzei · Fiction</p>
-            <h1 className="hero-title">Stories for readers who prefer a mystery that thinks back.</h1>
-            <p className="hero-lede">
-              Crime, memory, identity, evidence and the uncomfortable space between what happened and what can be proved.
+      <section className="platform-hero">
+        <div className="shell platform-hero-inner">
+          <div className="platform-hero-copy">
+            <p className="eyebrow">Bob Mazzei · Author</p>
+            <h1>Independent writing, analysis and books.</h1>
+            <p className="platform-hero-lede">
+              Technology, business, artificial intelligence and the ideas that shape how organisations and societies work.
             </p>
+            <div className="credibility-line" aria-label="Professional background">
+              <strong>Author · Business Engineer · AI Consultant</strong>
+              <span>More than three decades across technology, business and international commerce.</span>
+            </div>
             <div className="hero-actions">
-              <ButtonLink href="/books/declans-lost-race/">Explore Declan&apos;s Lost Race</ButtonLink>
-              <ButtonLink href="/writing/" variant="secondary">Read my writing</ButtonLink>
+              <ButtonLink href={latest ? '/writing/' + latest.slug + '/' : '/writing/'}>
+                Read the latest
+              </ButtonLink>
+              <ButtonLink href="/writing/" variant="secondary">Explore writing</ButtonLink>
             </div>
           </div>
-          <div className="hero-book">
-            <BookCover book={declan} priority />
+          <div className="platform-hero-rule" aria-hidden="true">
+            <span>Writing</span>
+            <span>Analysis</span>
+            <span>Books</span>
           </div>
         </div>
       </section>
 
-      <section className="hook-band" aria-label="Declan's Lost Race hook">
-        <div className="shell hook-inner">
-          <div className="hook-mark" aria-hidden="true" />
-          <p className="hook-text"><span>One dead man.</span><span>Two male DNA profiles.</span></p>
-        </div>
-      </section>
+      {featured && (
+        <section className="section editorial-section home-featured-section">
+          <div className="shell">
+            <div className="section-heading-row">
+              <div>
+                <p className="eyebrow">Featured</p>
+                <h2>Selected writing.</h2>
+              </div>
+            </div>
+            <article className="home-featured-writing">
+              <div className="home-featured-meta">
+                <span>{writingTypeLabel(featured.type)}</span>
+                <span>{formatWritingDate(featured.date)}</span>
+                <span>{featured.readingMinutes} min read</span>
+              </div>
+              <div className="home-featured-copy">
+                <h3><Link href={'/writing/' + featured.slug + '/'}>{featured.title}</Link></h3>
+                <p>{featured.description}</p>
+                {featured.tags.length > 0 && (
+                  <div className="writing-tags">
+                    {featured.tags.slice(0, 3).map(tag => (
+                      <Link key={tagToSlug(tag)} href={'/writing/tag/' + tagToSlug(tag) + '/'}>{tag}</Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <Link className="writing-row-link" href={'/writing/' + featured.slug + '/'}>Read →</Link>
+            </article>
+          </div>
+        </section>
+      )}
 
       <section className="section">
-        <div className="shell feature-grid">
-          <BookCover book={declan} />
-          <div className="feature-copy">
-            <p className="eyebrow">Featured book</p>
-            <h2>Declan&apos;s Lost Race</h2>
-            <p>
-              A dead man is found on the Costa del Sol. Most of the body produces one male DNA profile. A mouth swab produces another.
-            </p>
-            <div className="feature-points">
-              <div className="feature-point"><span>01</span><span>The second profile matches evidence from a London murder committed thirty-two years earlier.</span></div>
-              <div className="feature-point"><span>02</span><span>An old university photograph points towards Declan.</span></div>
-              <div className="feature-point"><span>03</span><span>The investigation moves between London and southern Spain.</span></div>
+        <div className="shell">
+          <div className="section-heading-row">
+            <div>
+              <p className="eyebrow">Latest writing</p>
+              <h2>New work from the publishing desk.</h2>
             </div>
-            <div className="action-group">
-              {declan.amazonUrl && <ButtonLink href={declan.amazonUrl}>Buy on Amazon</ButtonLink>}
-              <ButtonLink href="/books/declans-lost-race/" variant="secondary">Discover the book</ButtonLink>
-            </div>
+            <ButtonLink href="/writing/" variant="text">View all writing</ButtonLink>
           </div>
+          <WritingList items={latestWriting} />
         </div>
       </section>
 
@@ -63,14 +109,115 @@ export default async function HomePage() {
         <div className="shell">
           <div className="section-heading-row">
             <div>
-              <p className="eyebrow">Latest writing</p>
-              <h2>Essays, articles, fiction and extracts.</h2>
+              <p className="eyebrow">Areas of interest</p>
+              <h2>Follow the questions, not the categories.</h2>
             </div>
-            <ButtonLink href="/writing/" variant="text">View all writing</ButtonLink>
           </div>
-          <WritingList items={latestWriting} />
+          <nav className="interest-links" aria-label="Areas of interest">
+            {areas.map(area => {
+              const href = liveTagSlugs.has(area.tag)
+                ? '/writing/tag/' + area.tag + '/'
+                : '/writing/?q=' + encodeURIComponent(area.label)
+              return <Link key={area.label} href={href}>{area.label}<span aria-hidden="true">→</span></Link>
+            })}
+          </nav>
         </div>
       </section>
+
+      <section className="section professional-section">
+        <div className="shell">
+          <div className="professional-intro">
+            <p className="eyebrow">Professional</p>
+            <h2>Experience applied to difficult decisions.</h2>
+            <p>
+              Independent analysis at the intersection of business, technology and artificial intelligence, informed by more than three decades of commercial and technical experience.
+            </p>
+          </div>
+          <div className="professional-areas">
+            <div>
+              <h3>AI &amp; Technology</h3>
+              <p>Independent assessment of artificial intelligence, automation, technology choices and the claims made around them.</p>
+            </div>
+            <div>
+              <h3>Business &amp; Decision Analysis</h3>
+              <p>Analysis of commercial problems, operating decisions, projects and the assumptions on which they depend.</p>
+            </div>
+            <div>
+              <h3>Executive Briefings</h3>
+              <p>Focused research and independent analysis for decisions that require more than a sales presentation or a dashboard.</p>
+            </div>
+          </div>
+          <div className="action-group">
+            <ButtonLink href="/advisory/">Work with Bob</ButtonLink>
+          </div>
+        </div>
+      </section>
+
+      <section className="section home-books-section">
+        <div className="shell">
+          <div className="section-heading-row">
+            <div>
+              <p className="eyebrow">Books</p>
+              <h2>Stories for readers who prefer a mystery that thinks back.</h2>
+            </div>
+          </div>
+
+          <article className="home-book-primary">
+            <BookCover book={declan} />
+            <div>
+              <p className="eyebrow">Latest novel</p>
+              <h3>{declan.title}</h3>
+              <p className="home-book-hook">{declan.hook.join(' ')}</p>
+              <p>{declan.shortDescription}</p>
+              <div className="action-group">
+                <ButtonLink href={'/books/' + declan.slug + '/'} variant="secondary">Discover the book</ButtonLink>
+                {declan.amazonUrl && <ButtonLink href={declan.amazonUrl}>Buy on Amazon</ButtonLink>}
+              </div>
+            </div>
+          </article>
+
+          <article className="home-book-secondary">
+            <div className="home-book-secondary-cover"><BookCover book={ghost} /></div>
+            <div>
+              <p className="eyebrow">Earlier work</p>
+              <h3>{ghost.title}</h3>
+              <p className="genre-line">Philosophical satire · 2023</p>
+              <p>{ghost.shortDescription}</p>
+              <div className="action-group">
+                <ButtonLink href={'/books/' + ghost.slug + '/'} variant="secondary">Discover the book</ButtonLink>
+                {ghost.amazonUrl && <ButtonLink href={ghost.amazonUrl}>Buy on Amazon</ButtonLink>}
+              </div>
+            </div>
+          </article>
+
+          <div className="home-books-more">
+            <ButtonLink href="/books/" variant="text">View all books</ButtonLink>
+          </div>
+        </div>
+      </section>
+
+      {premiumPublications.length > 0 && (
+        <section className="section editorial-section">
+          <div className="shell">
+            <div className="section-heading-row">
+              <div>
+                <p className="eyebrow">Briefings &amp; guides</p>
+                <h2>Premium publications.</h2>
+              </div>
+            </div>
+            <div className="premium-publications">
+              {premiumPublications.map(publication => (
+                <article key={publication.slug}>
+                  <p className="eyebrow">{publication.kind}</p>
+                  <h3>{publication.title}</h3>
+                  <p>{publication.description}</p>
+                  <ButtonLink href={publication.url} variant="secondary">View publication</ButtonLink>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section socratic-section">
         <div className="shell socratic-grid">
@@ -101,10 +248,10 @@ export default async function HomePage() {
             />
           </div>
           <div className="about-preview-copy">
-            <p className="eyebrow">About</p>
+            <p className="eyebrow">About Bob</p>
             <h2>Bob Mazzei</h2>
             <p>
-              Bob Mazzei writes fiction in which mystery meets questions of memory, identity, evidence and certainty. His work moves between Britain and southern Europe and is shaped by an interest in how people reason, what they believe and what the evidence actually permits them to know.
+              Bob Mazzei is an author, business engineer and AI consultant whose work spans fiction, technology, business, political economy and questions of evidence, reasoning and human behaviour.
             </p>
             <div className="action-group">
               <ButtonLink href="/about/" variant="text">About Bob</ButtonLink>

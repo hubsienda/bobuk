@@ -1728,3 +1728,9 @@ h4 { font-size: 1.12rem; }
     font-size: 1rem;
   }
 }
+
+
+/* Contextual professional publication CTA */
+.article-product-cta {
+  margin: 2rem 0;
+}

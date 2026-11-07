@@ -1,6 +1,6 @@
 import { useMDXComponents as getNextraComponents } from 'nextra/mdx-components'
 import type { ComponentPropsWithoutRef } from 'react'
-import { ArticleImage, BookCTA, ExternalLink, Note, PullQuote } from '@/components/EditorialMdx'
+import { ArticleImage, BookCTA, ExternalLink, Note, ProductCTA, PullQuote } from '@/components/EditorialMdx'
 
 const defaultComponents = getNextraComponents()
 
@@ -17,6 +17,7 @@ export function useMDXComponents(components = {}) {
     ArticleImage,
     Note,
     BookCTA,
+    ProductCTA,
     ExternalLink,
     ...components
   }

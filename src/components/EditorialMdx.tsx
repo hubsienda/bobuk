@@ -42,3 +42,12 @@ export function BookCTA({ href, children }: { href: string; children: ReactNode 
     </div>
   )
 }
+
+
+export function ProductCTA({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <div className="article-product-cta">
+      <ButtonLink href={href}>{children}</ButtonLink>
+    </div>
+  )
+}
